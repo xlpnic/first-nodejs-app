@@ -1,1 +1,1 @@
-# nodejs-course
+# nfirst-nodejs-app
