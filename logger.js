@@ -5,12 +5,14 @@ var url = 'http://mylogger.io/log';
 
 class Logger extends EventEmitter {
     log(message) {
-
         // Raise an event
-        this.emit('logging', { message: 'hello!' })
-    
+        this.emit('logging', { logMessage: message })
+
         // Send an HTTP request
         console.log(message);
+
+        // Raise an event
+        this.emit('messageLogged', { logMessage: message })        
     }
 }
 
