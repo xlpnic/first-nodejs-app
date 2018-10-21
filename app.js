@@ -1,16 +1,17 @@
+const http = require('http');
 
-const Logger = require('./logger');
-const logger = new Logger();
+const server = http.createServer((req, res) => {
+    if (req.url === '/'){
+        res.write('Hello World');
+        res.end();
+    }
 
-// Register a listener (before the event is raised).
-// 'logging' is the name of the event we want to listen for
-// The second param is a callback function that should be called when that event is raised.
-logger.on('logging', (arg) => {
-    console.log('Logger about to start logging.', arg.logMessage);
+    if(req.url === '/api/courses'){
+        res.write(JSON.stringify([1, 2, 3]));
+        res.end();
+    }
 });
 
-logger.on('messageLogged', (arg) => {
-    console.log('Logger finished logging.', arg.logMessage);
-});
+server.listen(3000);
 
-logger.log('hello!');
+console.log('Listening on port 3000');
